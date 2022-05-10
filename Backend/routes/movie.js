@@ -40,10 +40,13 @@ recordRoutes.route("/movie/:id").get(function (req, res) {
 recordRoutes.route("/movie/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    movieName: req.body.movieName,
-    ticketPrice:req.body.ticketPrice,
-    language:req.body.language,
-    type:req.body.type,
+    moviename: req.body.moviename,
+    ticketprice:req.body.ticketprice,
+    genress:req.body.genress,
+    showtime:req.body.showtime,
+    description:req.body.description,
+    cast:req.body.cast,
+    banner:req.body.banner,
     
     
   };
@@ -59,10 +62,13 @@ recordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId( req.params.id )};  
   let newvalues = {    
     $set: {      
-        movieName: req.body.movieName,
-        ticketPrice:req.body.ticketPrice,
-        language:req.body.language,
-        type:req.body.type,
+      moviename: req.body.moviename,
+      ticketprice:req.body.ticketprice,
+      genress:req.body.genress,
+      showtime:req.body.showtime,
+      description:req.body.description,
+      cast:req.body.cast,
+      banner:req.body.banner,
   },  
 };
 
