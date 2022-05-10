@@ -34,9 +34,27 @@ const Movie =() =>{
             <>
               <div className="col-md-6">
                   <h4 className="text uppercase text-black-50">
-                      {movie.type}
+                      {movie.movieName}
                   </h4>
+                  <div className="col-mod-6">
+                      <h4 className="text-uppercase-text-black-50">
+                      {movie.language}</h4>
+
+                      <h1 className="display-5">{movie.type}</h1>
+
+                      <h3 className="display-6-fw-bold-my-4">
+                          ${movie.ticketPrice}
+                      </h3>
+
+                      <button className="btn btn-outline-dark me-2">
+                          Book
+                      </button>
+                  </div>
+
+
               </div>
+
+
             </>
         )
     }
