@@ -71,20 +71,20 @@ const Items=()=>{
             <button className="btn btn-outline-dark me-2" onClick={()=>
             filterMovie("Comedy")}>Comedy</button>
             </div>
-            {filter.map((movies)=>{
+            {filter.map((movie)=>{
                 return(
                     <>
                         <div className="col-md-4 mb-4">
-                        <div class="card h-100 text-center p-4" key={movies.id}>
+                        <div class="card h-100 text-center p-4" key={movie._id}>
                             <div class="card-body">
-                                <h5 class="card-title">{movies.movieName}...</h5>
-                                <p class="card-text">Language:{movies.language}</p>
-                                <p class="card-text">Type:{movies.type}</p>
-                                <p class="card-text lead fw-bold">Ticket Price:{movies.ticketPrice}</p>
+                                <h5 class="card-title">{movie.movieName}...</h5>
+                                <p class="card-text">Language:{movie.language}</p>
+                                <p class="card-text">Type:{movie.type}</p>
+                                <p class="card-text lead fw-bold">Ticket Price:{movie.ticketPrice}</p>
                                 
-                                <NavLink to={`/items/${movies.id}`} class="btn btn-outline-dark">
-                                    <button>Book</button></NavLink>
-                                <NavLink to={`/item/${movies.id}`} class="btn btn-outline-dark"><button>Add to Cart</button></NavLink>
+                                <NavLink to={`/movie/${movie._id}`} class="btn btn-outline-dark">
+                                    <button className="btn btn-outline-dark me-2">View</button></NavLink>
+                                <NavLink to={`/movie/${movie._id}`} class="btn btn-outline-dark"><button className="btn btn-outline-dark me-2">Add to Cart</button></NavLink>
                             </div>
                             </div>
                                                     </div>
