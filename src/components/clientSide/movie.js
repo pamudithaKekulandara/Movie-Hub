@@ -1,22 +1,22 @@
 import React,{useState,useEffect} from "react";
 import { useParams } from "react-router-dom";
 
-const Item =() =>{
+const Movie =() =>{
 
     const {id}=useParams();
-    const [item,setItem]=useState([]);
+    const [movie,setMovie]=useState([]);
     const [loading,setLoading]=useState(false);
    
     useEffect(()=>{
 
 
-            const getItem=async ()=>{
+            const getMovie=async ()=>{
                 setLoading(true);
-                const response=await fetch(`http://localhost:5000/record/${id}`);
-                setItem(await response.json());
+                const response=await fetch(`http://localhost:5000/movie/${id}`);
+                setMovie(await response.json());
                 setLoading(false);
             }
-            getItem();
+            getMovie();
 
     },[]);
 
@@ -34,7 +34,7 @@ const Item =() =>{
             <>
               <div className="col-md-6">
                   <h4 className="text uppercase text-black-50">
-                      {Item.category}
+                      {movie.type}
                   </h4>
               </div>
             </>
@@ -56,4 +56,4 @@ const Item =() =>{
     )
 
 }
-export default Item;
+export default Movie;

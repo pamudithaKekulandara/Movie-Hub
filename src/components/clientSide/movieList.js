@@ -13,7 +13,7 @@ const Items=()=>{
 
         const getItems= async()=>{
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/record/`);
+        const response = await fetch(`http://localhost:5000/movie/`);
  
      if (componentMounted) {
      setData(await response.clone().json());
@@ -52,8 +52,8 @@ const Items=()=>{
         )
     }
 
-    const filterItems=(category)=>{
-        const updateList=data.filter((x)=>x.category===category);
+    const filterMovie=(type)=>{
+        const updateList=data.filter((x)=>x.type===type);
         setFilter(updateList);
     }
 
@@ -65,25 +65,26 @@ const Items=()=>{
             setFilter(data)}>
             All</button>
             <button className="btn btn-outline-dark me-2" onClick={()=>
-            filterItems("men's cloths")}> Men's Cloths</button>
+            filterMovie("Romance")}>Romance</button>
             <button className="btn btn-outline-dark me-2" onClick={()=>
-            filterItems("ladie's cloths")}> Ladie's Cloths</button>
+            filterMovie("Action")}>Action</button>
             <button className="btn btn-outline-dark me-2" onClick={()=>
-            filterItems("children's cloths")}> Children's Cloths</button>
+            filterMovie("Comedy")}>Comedy</button>
             </div>
-            {filter.map((items)=>{
+            {filter.map((movies)=>{
                 return(
                     <>
                         <div className="col-md-4 mb-4">
-                        <div class="card h-100 text-center p-4" key={items.id}>
+                        <div class="card h-100 text-center p-4" key={movies.id}>
                             <div class="card-body">
-                                <h5 class="card-title">{items.itemName}...</h5>
-
-                                <p class="card-text lead fw-bold">Unit Price:{items.unitPrice}</p>
-                                <p class="card-text">Quantity:{items.quantity}</p>
-                                <p class="card-text">Description:{items.description}</p>
-                                <NavLink to={`/items/${items.id}`} class="btn btn-outline-dark">Buy</NavLink>
-                                <NavLink to={`/item/${items.id}`} class="btn btn-outline-dark">Bu</NavLink>
+                                <h5 class="card-title">{movies.movieName}...</h5>
+                                <p class="card-text">Language:{movies.language}</p>
+                                <p class="card-text">Type:{movies.type}</p>
+                                <p class="card-text lead fw-bold">Ticket Price:{movies.ticketPrice}</p>
+                                
+                                <NavLink to={`/items/${movies.id}`} class="btn btn-outline-dark">
+                                    <button>Book</button></NavLink>
+                                <NavLink to={`/item/${movies.id}`} class="btn btn-outline-dark"><button>Add to Cart</button></NavLink>
                             </div>
                             </div>
                                                     </div>
@@ -105,7 +106,7 @@ const Items=()=>{
                 <div className="row">
                     <div className="col-12 mb-5">
                         <h1 className="display-6 fw-bolder text-center">
-                            Latest Products
+                            Latest Movies
                         </h1>
                         <hr/>
                     </div>
