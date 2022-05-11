@@ -19,7 +19,11 @@ const NavBar=()=>{
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/addmovie">About</a>
+          <a class="nav-link" href="#">About</a>
+        </li>
+     
+        <li class="nav-item">
+          <a class="nav-link" href="/addmovie">Backend</a>
         </li>
 
         <li class="nav-item">
