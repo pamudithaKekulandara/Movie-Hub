@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express");
 
 // recordRoutes is an instance of the express router.
@@ -47,8 +48,6 @@ recordRoutes.route("/movie/add").post(function (req, response) {
     description:req.body.description,
     cast:req.body.cast,
     banner:req.body.banner,
-    
-    
   };
   db_connect.collection("movie").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -56,12 +55,12 @@ recordRoutes.route("/movie/add").post(function (req, response) {
   });
 });
 
-// This section will help you update a record by id.
+//This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
-  let db_connect = dbo.getDb();  
-  let myquery = { _id: ObjectId( req.params.id )};  
-  let newvalues = {    
-    $set: {      
+  let db_connect = dbo.getDb(); 
+  let myquery = { _id: ObjectId( req.params.id )}; 
+  let newvalues = {   
+    $set: {     
       moviename: req.body.moviename,
       ticketprice:req.body.ticketprice,
       genress:req.body.genress,
@@ -69,8 +68,33 @@ recordRoutes.route("/update/:id").post(function (req, response) {
       description:req.body.description,
       cast:req.body.cast,
       banner:req.body.banner,
-  },  
-};
+    },
+   };response.sendStatus(200);
+ });
+
+// const router = require("express").Router();
+// let movie = require("../routes/movie.js");
+// router.route("/").get((req, res) => {
+//   movie.find()
+//     .then((movies) => res.json(movies))
+//     .catch((err) => res.status(400).json("Error: " + err));
+// });
+// router.route("/update/:id").post((req, res) => {
+//   const moviename = req.body.moviename;
+//   const ticketprice = req.body.ticketprice;
+//   const genress = req.body.genress;
+//   const showtime = req.body.showtime;
+//   const description= req.body.description;
+//   const  cast = req.body. cast;
+//   const  banner = req.body. banner;
+
+//   const newMovie = new Movie({ moviename, ticketprice, genress, showtime, description, cast, banner });
+
+//   newMovie
+//     .save()
+//     .then(() => res.json("Movie Updated!"))
+//     .catch((err) => res.status(400).json("Error: " + err));
+// });
 
 // This section will help you delete a record
 recordRoutes.route("/:id").delete((req, response) => {
@@ -82,5 +106,5 @@ recordRoutes.route("/:id").delete((req, response) => {
     response.json(obj);
   });
 });
-})
+
 module.exports = recordRoutes;
