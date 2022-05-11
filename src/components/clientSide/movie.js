@@ -62,7 +62,7 @@ const Movie =() =>{
 
     return(
         <div>
-            <div className="container">
+            <div className="container">]
                 <div className="row">
 
                     {loading ? <Loading/> : <ShowItem/>}
