@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import CusApp from "./CusApp";
 import AdminApp from "./AdminApp";
 import { BrowserRouter } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
       <AdminApp />
+      <CusApp/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
