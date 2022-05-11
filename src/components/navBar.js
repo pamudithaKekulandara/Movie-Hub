@@ -23,7 +23,7 @@ const NavBar=()=>{
         </li>
      
         <li class="nav-item">
-          <a class="nav-link" href="/addmovie">Backend</a>
+          <a class="nav-link" href="/addmovie">Admin</a>
         </li>
 
         <li class="nav-item">

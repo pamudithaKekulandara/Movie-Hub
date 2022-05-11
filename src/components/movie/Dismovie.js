@@ -11,14 +11,14 @@ const Movie = (props) => (
    <td>{props.movie.cast}</td>
    <td>{props.movie.banner}</td>
    <td>
-     {/* <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> | */}
-     {/* <button className="btn btn-link"
+   <Link className="btn btn-link" to={`/edit/${props.movie._id}`}>Edit</Link> |
+   <button className="btn btn-link"
        onClick={() => {
-         props.deleteRecord(props.record._id);
+         props.deleteMovie(props.movie._id);
        }}
      >
        Delete
-     </button> */}
+     </button>
    </td>
  </tr>
 );
@@ -46,24 +46,24 @@ export default function Dismovie() {
    return;
  }, [movies.length]);
  
- // This method will delete a record
-//  async function deleteRecord(id) {
-//    await fetch(`http://localhost:5000/${id}`, {
-//      method: "DELETE"
-//    });
+ //This method will delete a record
+ async function deleteMovie(id) {
+   await fetch(`http://localhost:5000/${id}`, {
+     method: "DELETE"
+   });
  
-//    const newRecords = records.filter((el) => el._id !== id);
-//    setRecords(newRecords);
-//  }
+   const newMovies = movies.filter((el) => el._id !== id);
+   setMovies(newMovies);
+ }
  
- // This method will map out the records on the table
+// This method will map out the records on the table
  function movieList() {
    return movies.map((movie) => {
      return (
        <Movie
          movie={movie}
-        //  deleteRecord={() => deleteRecord(record._id)}
-        //  key={record._id}
+         deleteMovie={() => deleteMovie(movie._id)}
+         key={movie._id}
        />
      );
    });
