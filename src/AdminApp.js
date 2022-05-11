@@ -12,7 +12,7 @@ export default function BackendApp() {
     <Routes>
     <Route exact path="/addmovie" element={<Addmovie/>}/>
     <Route exact path="/dismovie" element={<Dismovie/>}/>
-    <Route exact path="/edit" element={<Updatemovie/>}/>
+    <Route exact path="/edit/:id" element={<Updatemovie/>}/>
 
     </Routes>
     
