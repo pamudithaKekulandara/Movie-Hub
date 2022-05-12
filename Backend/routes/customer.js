@@ -42,8 +42,12 @@ recordRoutes.route("/customer/add").post(function (req, response) {
   let myobj = {
     name: req.body.name,
     phoneNo:req.body.phoneNo,
-    address:req.body.address,
-    email:req.body.email
+    email:req.body.email,
+    password:req.body.password,
+    cardNo:req.body.cardNo,
+    cvc:req.body.cvc,
+    eDate:req.body.eDate,
+    eYear:req.body.eYear
 
     
   };
@@ -59,10 +63,14 @@ recordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId( req.params.id )};  
   let newvalues = {    
     $set: {      
-        name: req.body.name,
-        phoneNo:req.body.phoneNo,
-        address:req.body.address,
-        email:req.body.email
+      name: req.body.name,
+      phoneNo:req.body.phoneNo,
+      email:req.body.email,
+      password:req.body.password,
+      cardNo:req.body.cardNo,
+      cvc:req.body.cvc,
+      eDate:req.body.eDate,
+      eYear:req.body.eYear
     
   },  
 };

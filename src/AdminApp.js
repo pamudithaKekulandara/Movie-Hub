@@ -6,7 +6,7 @@ import Updatemovie from './components/movie/Updatemovie';
 
 
 
-export default function BackendApp() {
+export default function AdminApp() {
   return (
     <div> 
     <Routes>
