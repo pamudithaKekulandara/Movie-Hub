@@ -77,7 +77,7 @@ export default function Updatemovie() {
  return (
   <div className="container">
     <h3>Update Movie</h3>
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} >
         
       <div className="form-group">
         <label htmlFor="moviename">Movie Name</label>
@@ -151,7 +151,7 @@ export default function Updatemovie() {
           onChange={(e) => updateForm({   banner: e.target.value})}
         />
       </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button  onClick={onSubmit} class="btn btn-primary">Update</button>
     </form>
   </div>
 )

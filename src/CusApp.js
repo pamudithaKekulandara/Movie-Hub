@@ -11,7 +11,7 @@ function CusApp() {
   return (
     <div>
 
-    <NavBar/>  
+    {/* <NavBar/>   */}
 
     <Routes>
     {/* <Route exact path="/" element={<Home/>}/> */}

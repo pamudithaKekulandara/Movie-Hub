@@ -32,11 +32,11 @@ const NavBar=()=>{
 
       </ul>
       <div className="buttons">
-          <a href="" className="btn btn-outline-dark">
+          <a href="/login" className="btn btn-outline-dark">
               <i className="fa fa-sign-in me-1"></i> Login</a>
       </div>
       <div className="buttons">
-          <a href="" className="btn btn-outline-dark">
+          <a href="/reg" className="btn btn-outline-dark">
               <i className="fa fa-user-plus ms-2"></i> Register</a>
       </div>
       <div className="buttons">
