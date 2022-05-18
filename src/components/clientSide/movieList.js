@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import Skeleton from "react-loading-skeleton"
 import { NavLink } from "react-router-dom";
+import Movie from "./movie";
 
 const Items=()=>{
 
@@ -52,8 +53,8 @@ const Items=()=>{
         )
     }
 
-    const filterMovie=(type)=>{
-        const updateList=data.filter((x)=>x.type===type);
+    const filterMovie=(type,moviename)=>{
+        const updateList=data.filter((x)=>x.type===type,moviename==moviename);
         setFilter(updateList);
     }
 
@@ -70,6 +71,12 @@ const Items=()=>{
             filterMovie("Action")}>Action</button>
             <button className="btn btn-outline-dark me-2" onClick={()=>
             filterMovie("Comedy")}>Comedy</button>
+
+            <input type="text" placeholder="Search.." onChange={()=>{
+                filterMovie(Movie.moviename)
+            }}/>
+            <button onSubmit={filterMovie}>search</button>
+            
             </div>
             {filter.map((movie)=>{
                 return(
@@ -77,9 +84,13 @@ const Items=()=>{
                         <div className="col-md-4 mb-4">
                         <div class="card h-100 text-center p-4" key={movie._id}>
                             <div class="card-body">
-                                <h5 class="card-title">{movie.movieName}...</h5>
-                                <p class="card-text">Language:{movie.language}</p>
-                                <p class="card-text">Type:{movie.type}</p>
+
+                                <h5 class="card-title">{movie.moviename}...</h5>
+                                <p class="card-text">Genress:{movie.genress}</p>
+                                <p className="card-text">Show time:{movie.showtime}</p>
+                                <p class="card-text">Description:{movie.description}</p>
+                                <p className="card-text">Cast:{movie.cast}</p>
+                                <p className="card-text">banner:{movie.banner}</p>
                                 <p class="card-text lead fw-bold">Ticket Price:{movie.ticketPrice}</p>
                                 
                                 <NavLink to={`/movie/${movie._id}`} class="btn btn-outline-dark">
