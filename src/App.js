@@ -28,7 +28,6 @@ function App() {
   //   console.log(details);
 
   // }
-
   return (
     <div>
       <NavBar />
@@ -44,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
