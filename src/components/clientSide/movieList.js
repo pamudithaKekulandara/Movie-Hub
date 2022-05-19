@@ -109,10 +109,10 @@ const Items = () => {
                     <p className="card-text">Genress:{movie.genress}</p>
                     <p className="card-text">Show time:{movie.showtime}</p>
                     <p className="card-text">Description:{movie.description}</p>
-                    {/* <p className='card-text'>Cast:{movie.cast}</p>
-                    <p className='card-text'>banner:{movie.banner}</p> */}
+                    <p className='card-text'>Cast:{movie.cast}</p>
+                    {/* <p className='card-text'>banner:{movie.banner}</p>  */}
                     <p className="card-text lead fw-bold">
-                      Ticket Price:{movie.ticketPrice}
+                      Ticket Price:{movie.ticketprice}
                     </p>
 
                     <NavLink
