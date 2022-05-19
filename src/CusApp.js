@@ -7,6 +7,7 @@ import Items from './components/clientSide/movieList';
 import Movie from './components/clientSide/movie';
 
 
+
 function CusApp() {
   return (
     <div>

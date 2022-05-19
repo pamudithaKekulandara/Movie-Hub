@@ -33,9 +33,10 @@ export default function Register(){
     if(form.password!=form.rpassword){
     
       alert("Plesase enter password correctly");
-  
-  
+      navigate("/reg");
+
     }
+    else{
     await fetch("http://localhost:5000/customer/add", {
       method: "POST",
       headers: {
@@ -60,6 +61,7 @@ export default function Register(){
     navigate("/")
   
   }
+}
 
 
 

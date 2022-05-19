@@ -7,7 +7,7 @@ export default function LoginFun() {
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser != null) {
-      window.location = "/users";
+      window.location = "/items";
     }
   }, []);
 
@@ -25,7 +25,7 @@ export default function LoginFun() {
       .then((res) => {
         if (res.data == "granted") {
           localStorage.setItem("user", email);
-          window.location = "/users";
+          window.location = "/items";
         } else {
           console.log(res.data);
         }

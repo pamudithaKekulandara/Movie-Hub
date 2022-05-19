@@ -8,7 +8,7 @@ const Movie =() =>{
     const [loading,setLoading]=useState(false);
    
     useEffect(()=>{
-
+        const loggedInUser = localStorage.getItem("user");
 
             const getMovie=async ()=>{
                 setLoading(true);

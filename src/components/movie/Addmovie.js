@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
  
 export default function Addmovie() {
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+  
+  }, []);
+
  const [form, setForm] = useState({
    moviename: "",
    ticketprice: "",

@@ -1,7 +1,13 @@
-import React from "react";
+
 import Items from "./movieList";
+import { useEffect } from "react";
 
  const Home= () =>{
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+
+  }, []);
 
     return(
     <div className="hero">

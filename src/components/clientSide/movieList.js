@@ -8,10 +8,12 @@ const Items=()=>{
     const [data,setData]=useState([]);
     const [filter,setFilter]=useState([data]);
     const [loading,setLoading]=useState(false);
-    const [query, setQuery] = useState("")
+    // const [query, setQuery] = useState("")
     let componentMounted=true;
 
     useEffect(()=>{
+
+        const loggedInUser = localStorage.getItem("user");
 
         const getItems= async()=>{
         setLoading(true);
@@ -20,7 +22,7 @@ const Items=()=>{
      if (componentMounted) {
      setData(await response.clone().json());
      setFilter(await response.clone().json());
-     setQuery(await response.clone().json());
+    //  setQuery(await response.clone().json());
      
      
     //  setValue(await response.clone().json());
@@ -68,14 +70,14 @@ const Items=()=>{
     const ShowItems=()=>{
 
        
-        console.log(query)
+        // console.log(query)
         
-        const search=()=>{ data.filter(Movie => {
-            if (query === '') {
-              return ShowItems;
-            } else if (Movie.moviename.toLowerCase().includes(query.toLowerCase())) {
-              return ShowItems;
-            }})}
+        // const search=()=>{ data.filter(Movie => {
+        //     if (query === '') {
+        //       return ShowItems;
+        //     } else if (Movie.moviename.toLowerCase().includes(query.toLowerCase())) {
+        //       return ShowItems;
+        //     }})}
 
         return(
             <>
@@ -90,8 +92,8 @@ const Items=()=>{
             <button className="btn btn-outline-dark me-2" onClick={()=>
             filterMovie("Comedy")}>Comedy</button>
 
-            <input placeholder="Enter Post Title" 
-            onChange={event => search({query : event.target.value})} />
+            {/* <input placeholder="Enter Post Title" 
+            onChange={event => search({query : event.target.value})} /> */}
             
           
             

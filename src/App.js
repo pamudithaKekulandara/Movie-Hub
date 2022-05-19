@@ -11,28 +11,40 @@ import CusApp from "./CusApp";
 import AdminApp from "./AdminApp";
 import Register from "./components/loginSignup/registartion";
 import LoginFun from "./components/loginSignup/login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LogedNavBar from "./components/logedNavBar";
 
 function App() {
-  // const adminUser={
-  //   email:"456",
-  //   password:"123"
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser != null) {
+    
+    }
+  }, []);
 
-  // }
+  
+      if(localStorage.getItem("user")==null){
+        return(
+          <div><NavBar />
+          <Routes>
+        <Route exact path="/customer" element={<CusApp/>}/>
+        <Route exact path="/admin" element={<AdminApp/>}/>
 
-  // const [customer,setCustomer]=useState({email:""})
-  // const[error,setError]=useState("");
-
-  // const Login=details=>{
-
-  //   console.log(details);
-
-  // }
-
-  return (
-    <div>
-      <NavBar />
-
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/reg" element={<Register />} />
+        <Route exact path="/login" element={<LoginFun />} />
+        {/* <Route exact path="/customer" element={<CusApp/>}/>
+    <Route exact path='admin' element={<AdminApp/>}/> */}
+      </Routes>
+          
+          </div>    
+        )
+      }
+      else{
+        return(
+          <div>
+        <LogedNavBar/>
+        
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/reg" element={<Register />} />
@@ -40,8 +52,11 @@ function App() {
         {/* <Route exact path="/customer" element={<CusApp/>}/>
     <Route exact path='admin' element={<AdminApp/>}/> */}
       </Routes>
-    </div>
-  );
-}
 
+
+
+    </div>
+  )
+}
+}
 export default App;

@@ -28,6 +28,9 @@ export default function Dismovie() {
  
  // This method fetches the records from the database.
  useEffect(() => {
+
+  const loggedInUser = localStorage.getItem("user");
+  
    async function getMovies() {
      const response = await fetch(`http://localhost:5000/movie/`);
  
