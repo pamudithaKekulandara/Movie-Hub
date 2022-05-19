@@ -29,10 +29,15 @@ export default function Register() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newCustomer = { ...form };
     if (form.password != form.rpassword) {
-      alert("Plesase enter password correctly");
+
+      alert('Plesase enter password correctly')
+
+      window.location = "/reg";
     }
-    await fetch("http://localhost:5000/customer/add", {
-      method: "POST",
+    else{
+    await fetch('http://localhost:5000/customer/add', {
+      method: 'POST',
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -55,6 +60,7 @@ export default function Register() {
     });
     navigate("/");
   }
+}
 
   return (
     <div className="container">

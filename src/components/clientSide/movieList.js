@@ -48,13 +48,15 @@ const Items = () => {
     );
   };
 
-  const filterMovie = (type, moviename) => {
+  const filterMovie = (genress) => {
     const updateList = data.filter(
-      (x) => x.type === type,
-      moviename == moviename
-    );
-    setFilter(updateList);
-  };
+
+      (x) => x.genress === genress,
+      
+    )
+    setFilter(updateList)
+  }
+
 
   const ShowItems = () => {
     return (
@@ -85,14 +87,12 @@ const Items = () => {
             Comedy
           </button>
 
-          <input
-            type="text"
-            placeholder="Search.."
+
             onChange={() => {
               filterMovie(Movie.moviename);
             }}
           />
-          <button onSubmit={filterMovie}>search</button>
+          <button onSubmit={filterMovie}>search</button> */}
         </div>
         {filter.map((movie) => {
           return (
