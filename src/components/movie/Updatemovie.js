@@ -62,7 +62,7 @@ export default function Updatemovie() {
     };
   
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/update/${params.id}`, {
+    await fetch(`http://localhost:5000/movie/update/${params.id}`, {
       method: "POST",
       body: JSON.stringify(editedMovie),
       headers: {
@@ -151,7 +151,14 @@ export default function Updatemovie() {
           onChange={(e) => updateForm({   banner: e.target.value})}
         />
       </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <div className="form-group">
+         <input
+           type="submit"
+           value="Update Record"
+           className="btn btn-primary"
+         />
+       </div>
+      {/* <button type="submit" class="btn btn-primary">Update</button> */}
     </form>
   </div>
 )

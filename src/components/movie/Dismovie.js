@@ -5,6 +5,7 @@ const Movie = (props) => (
  <tr>
    <td>{props.movie.moviename}</td>
    <td>{props.movie.ticketprice}</td>
+   <td>{props.movie.theater}</td>
    <td>{props.movie.genress}</td>
    <td>{props.movie.showtime}</td>
    <td>{props.movie.description}</td>
@@ -82,6 +83,7 @@ export default function Dismovie() {
          <tr>
            <th>Movie Name</th>
            <th>Price</th>
+           <th>Theater Name</th>
            <th>Genress</th>
            <th>Showtime</th>
            <th>Description</th>

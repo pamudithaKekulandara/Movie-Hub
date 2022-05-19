@@ -14,10 +14,10 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the records.
-recordRoutes.route("/movie").get(function (req, res) {
+recordRoutes.route("/theater").get(function (req, res) {
   let db_connect = dbo.getDb("movieHub");
   db_connect
-    .collection("movie")
+    .collection("theater")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
@@ -26,11 +26,11 @@ recordRoutes.route("/movie").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/movie/:id").get(function (req, res) {
+recordRoutes.route("/theater/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
-      .collection("movie")
+      .collection("theater")
       .findOne(myquery, function (err, result) {
         if (err) throw err;
         res.json(result);
@@ -38,19 +38,15 @@ recordRoutes.route("/movie/:id").get(function (req, res) {
 });
 
 // This section will help you create a new record.
-recordRoutes.route("/movie/add").post(function (req, response) {
+recordRoutes.route("/theater/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    moviename: req.body.moviename,
-    ticketprice:req.body.ticketprice,
-    threater:req.body.threater,
-    genress:req.body.genress,
-    showtime:req.body.showtime,
+    theatername: req.body.theatername,
+    nosheets:req.body.nosheets,
+    place:req.body.place,
     description:req.body.description,
-    cast:req.body.cast,
-    banner:req.body.banner,
   };
-  db_connect.collection("movie").insertOne(myobj, function (err, res) {
+  db_connect.collection("theater").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
@@ -62,14 +58,10 @@ recordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId( req.params.id )}; 
   let newvalues = {   
     $set: {     
-      moviename: req.body.moviename,
-      ticketprice:req.body.ticketprice,
-      threater:req.body.threater,
-      genress:req.body.genress,
-      showtime:req.body.showtime,
-      description:req.body.description,
-      cast:req.body.cast,
-      banner:req.body.banner,
+        theatername: req.body.theatername,
+        nosheets:req.body.nosheets,
+        place:req.body.place,
+        description:req.body.description,
     },
    };response.sendStatus(200);
  });
@@ -102,7 +94,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("movie").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("theater").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.json(obj);
