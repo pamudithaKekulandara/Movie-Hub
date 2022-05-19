@@ -35,20 +35,8 @@ const NavBar = () => {
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    About
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="/addmovie">
-                    Admin
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Contact
+                  <a className="nav-link" href="/theater">
+                    Theaters
                   </a>
                 </li>
               </ul>
