@@ -57,18 +57,13 @@ export default function Addmovie() {
   // This following section will display the form that takes the input from the user.
   return (
     <center>
+        <Link to = "/admin">
+    <button>Home</button>
+    </Link>
+    <Link to = "/dismovie">
+    <button>Movies</button>
+    </Link>
       <div className="container">
-        <li className="nav-item">
-          <a className="nav-link" href="/dismovie">
-            Movie Table
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/addtheater">
-            Theater form
-          </a>
-        </li>
-
         <h3>Add New Item</h3>
         <form onSubmit={onSubmit}>
           <div className="form-group">
