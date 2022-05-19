@@ -43,12 +43,13 @@ export default function Addtheater() {
   // This following section will display the form that takes the input from the user.
   return (
     <center>
+              <Link to = "/admin">
+    <button>Home</button>
+    </Link>
+    <Link to = "/distheater">
+    <button>Theater</button>
+    </Link>
       <div className="container">
-        <li className="nav-item">
-          <a className="nav-link" href="/distheater">
-            Theater Table
-          </a>
-        </li>
         <h3>Add New Theater</h3>
         <form onSubmit={onSubmit}>
           <div className="form-group">

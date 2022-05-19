@@ -69,12 +69,13 @@ export default function Distheater() {
   // This following section will display the table with the records of individuals.
   return (
     <center>
+              <Link to = "/admin">
+    <button>Home</button>
+    </Link>
+    <Link to = "/addtheater">
+    <button>Add New Theater</button>
+    </Link>
       <div>
-        <li className="nav-item">
-          <a className="nav-link" href="/addtheater">
-            Addtheater
-          </a>
-        </li>
         <h3>TheaterList</h3>
         <table
           className="table table-striped"
