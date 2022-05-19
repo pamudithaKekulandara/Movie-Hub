@@ -24,6 +24,8 @@ recordRoutes.route("/movie").get(function (req, res) {
     });
 });
 
+
+
 // This section will help you get a single record by id
 recordRoutes.route("/movie/:id").get(function (req, res) {
   let db_connect = dbo.getDb();

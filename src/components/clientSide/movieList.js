@@ -8,6 +8,7 @@ const Items=()=>{
     const [data,setData]=useState([]);
     const [filter,setFilter]=useState([data]);
     const [loading,setLoading]=useState(false);
+    const [query, setQuery] = useState("")
     let componentMounted=true;
 
     useEffect(()=>{
@@ -19,6 +20,10 @@ const Items=()=>{
      if (componentMounted) {
      setData(await response.clone().json());
      setFilter(await response.clone().json());
+     setQuery(await response.clone().json());
+     
+     
+    //  setValue(await response.clone().json());
      setLoading(false);
        console.log(filter);
 
@@ -54,11 +59,24 @@ const Items=()=>{
     }
 
     const filterMovie=(type,moviename)=>{
-        const updateList=data.filter((x)=>x.type===type,moviename==moviename);
+        const updateList=data.filter((x)=>x.type==type);
         setFilter(updateList);
     }
 
+   
+
     const ShowItems=()=>{
+
+       
+        console.log(query)
+        
+        const search=()=>{ data.filter(Movie => {
+            if (query === '') {
+              return ShowItems;
+            } else if (Movie.moviename.toLowerCase().includes(query.toLowerCase())) {
+              return ShowItems;
+            }})}
+
         return(
             <>
             <div className="buttons d-flex justify-content-center mb-5 pb-5">
@@ -72,10 +90,10 @@ const Items=()=>{
             <button className="btn btn-outline-dark me-2" onClick={()=>
             filterMovie("Comedy")}>Comedy</button>
 
-            <input type="text" placeholder="Search.." onChange={()=>{
-                filterMovie(Movie.moviename)
-            }}/>
-            <button onSubmit={filterMovie}>search</button>
+            <input placeholder="Enter Post Title" 
+            onChange={event => search({query : event.target.value})} />
+            
+          
             
             </div>
             {filter.map((movie)=>{
