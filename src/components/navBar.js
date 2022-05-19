@@ -64,7 +64,7 @@ const NavBar = () => {
           </div>
           <div className='buttons'>
             <a href='/cart' className='btn btn-outline-dark'>
-              <i className='fa fa-shopping-cart ms-2'></i> Cart (0)
+              <i className='fa fa-shopping-cart ms-2'></i> Cart ({state.length})
             </a>
           </div>
         </div>
