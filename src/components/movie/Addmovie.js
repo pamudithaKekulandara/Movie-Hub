@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
  
@@ -6,12 +6,15 @@ export default function Addmovie() {
  const [form, setForm] = useState({
    moviename: "",
    ticketprice: "",
+   theater: "",
    genress: "",
    showtime:"",
    description:"",
    cast:"",
    banner:"",
  });
+
+
  const navigate = useNavigate();
  
  // These methods will update the state properties.
@@ -42,6 +45,7 @@ export default function Addmovie() {
  
    setForm({    moviename: "",
    ticketprice: "",
+   theater: "",
    genress: "",
    showtime:"",
    description:"",
@@ -59,6 +63,10 @@ export default function Addmovie() {
 <li class="nav-item">
   <a class="nav-link" href="/dismovie">Movie Table</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="/addtheater">Theater form</a>
+</li>
+
 <h3>Add New Item</h3>
 <form onSubmit={onSubmit}>
  
@@ -72,6 +80,7 @@ export default function Addmovie() {
    onChange={(e) => updateForm({ moviename: e.target.value})}
  />
 </div>
+
 <div className="form-group">
  <label htmlFor="unitPrice">Ticket Price</label>
  <input
@@ -80,6 +89,17 @@ export default function Addmovie() {
    id="ticketprice"
    value={form.ticketprice}
    onChange={(e) => updateForm({ ticketprice: e.target.value})}
+ />
+</div>
+
+<div className="form-group">
+ <label htmlFor="itemName">Theater Name</label>
+ <input
+   type="text"
+   className="form-control"
+   id="theater"
+   value={form.theater}
+   onChange={(e) => updateForm({ theater: e.target.value})}
  />
 </div>
 

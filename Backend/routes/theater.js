@@ -12,11 +12,12 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
+
 // This section will help you get a list of all the records.
-recordRoutes.route("/movie").get(function (req, res) {
+recordRoutes.route("/theater").get(function (req, res) {
   let db_connect = dbo.getDb("movieHub");
   db_connect
-    .collection("movie")
+    .collection("theater")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
@@ -25,55 +26,45 @@ recordRoutes.route("/movie").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/movie/:id").get(function (req, res) {
+recordRoutes.route("/theater/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("movie").findOne(myquery, function (err, result) {
-    if (err) throw err;
-    res.json(result);
-  });
+  let myquery = { _id: ObjectId( req.params.id )};
+  db_connect
+      .collection("theater")
+      .findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
 });
 
 // This section will help you create a new record.
-recordRoutes.route("/movie/add").post(function (req, response) {
+recordRoutes.route("/theater/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    moviename: req.body.moviename,
-    ticketprice:req.body.ticketprice,
-    threater:req.body.threater,
-    genress:req.body.genress,
-    showtime:req.body.showtime,
+    theatername: req.body.theatername,
+    nosheets:req.body.nosheets,
+    place:req.body.place,
     description:req.body.description,
-    cast:req.body.cast,
-    banner:req.body.banner,
   };
-  db_connect.collection("movie").insertOne(myobj, function (err, res) {
+  db_connect.collection("theater").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
 });
 
 //This section will help you update a record by id.
-recordRoutes.route("/movie/update/:id").post(function (req, response) {
-  // response.json(req.params.id);
-  let db_connect = dbo.getDb();
-
-  let myquery = { _id: ObjectId(req.params.id) };
-  let newvalues = {
-    $set: {
-      moviename: req.body.moviename,
-      ticketprice:req.body.ticketprice,
-      threater:req.body.threater,
-      genress:req.body.genress,
-      showtime:req.body.showtime,
-      description:req.body.description,
-      cast:req.body.cast,
-      banner:req.body.banner,
+recordRoutes.route("/update/:id").post(function (req, response) {
+  let db_connect = dbo.getDb(); 
+  let myquery = { _id: ObjectId( req.params.id )}; 
+  let newvalues = {   
+    $set: {     
+        theatername: req.body.theatername,
+        nosheets:req.body.nosheets,
+        place:req.body.place,
+        description:req.body.description,
     },
-  };
-  db_connect.collection("movie").updateOne(myquery, newvalues);
-  response.sendStatus(200);
-});
+   };response.sendStatus(200);
+ });
 
 // const router = require("express").Router();
 // let movie = require("../routes/movie.js");
@@ -102,8 +93,8 @@ recordRoutes.route("/movie/update/:id").post(function (req, response) {
 // This section will help you delete a record
 recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("movie").deleteOne(myquery, function (err, obj) {
+  let myquery = { _id: ObjectId( req.params.id )};
+  db_connect.collection("theater").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
     response.json(obj);
