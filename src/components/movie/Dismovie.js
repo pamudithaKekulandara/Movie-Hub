@@ -77,12 +77,13 @@ export default function Dismovie() {
   // This following section will display the table with the records of individuals.
   return (
     <center>
+              <Link to = "/admin">
+    <button>Home</button>
+    </Link>
+    <Link to = "/addmovie">
+    <button>Add New Update</button>
+    </Link>
       <div>
-        <li className="nav-item">
-          <a className="nav-link" href="/addmovie">
-            ADDform
-          </a>
-        </li>
         <h3>MovieList</h3>
         <table
           className="table table-striped"
