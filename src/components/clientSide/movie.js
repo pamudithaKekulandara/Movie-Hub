@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCart } from '../../redux/actions'
 import { Link, useParams } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -9,12 +11,12 @@ const Movie = () => {
   const [movie, setMovie] = useState([])
   const [loading, setLoading] = useState(false)
   const [ticketCount, setCount] = useState()
-  const [value, onChange] = useState(new Date())
+  // const [value, onChange] = useState(new Date())
+  // const [qty, setQty] = useState(1);
 
-  function updateForm(value) {
-    return ticketCount(() => {
-      return { ...value }
-    })
+  const dispatch = useDispatch()
+  const addProduct = (product) => {
+    dispatch(addCart(product))
   }
 
   useEffect(() => {
@@ -49,9 +51,9 @@ const Movie = () => {
   const ShowItem = () => {
     return (
       <>
-        <div className='col-md-6'>
+        <div className='col-md-6' key={movie._id}>
           <img
-            src='https://picsum.photos/id/237/200/300'
+            src={movie.banner}
             alt={movie.movieName}
             height='400px'
             width='400px'
@@ -63,22 +65,24 @@ const Movie = () => {
             <h1 className='display-5'>{movie.moviename}</h1>
             <p className='lead'>Cast : {movie.cast}</p>
             <p className='lead'>Description : {movie.description}</p>
+            <p className='lead'>Theater : {movie.theater}</p>
             <p className='lead fw-bolder'>Time : {movie.showtime}</p>
             <h3 className='display-6 fw-bold my-4'>${movie.ticketprice}</h3>
-            <div className='my-4'>
+            <div className='my-4 col-3'>
               <input
                 type='number'
                 placeholder='No. Of Tickets'
                 id='ticketCount'
                 value={ticketCount}
-                onChange={(e) => updateForm({ ticketCount: e.target.value })}
+                onChange={(e) => setCount({ ticketCount: e.target.value })}
               />
             </div>
             {/* <div>
               <DatePicker onChange={onChange} value={value} />
             </div> */}
+            <button className='btn btn-dark me-2' onClick={()=>addProduct(movie)}>Add to Cart</button>
             <Link to='/cart'>
-              <button className='btn btn-dark me-2'>Add to Cart</button>
+              <button className='btn btn-dark me-2'>Go to Cart</button>
             </Link>
           </div>
         </div>

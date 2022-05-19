@@ -1,6 +1,7 @@
 import React from 'react'
 import Items from './movieList'
 
+
 const Home = () => {
   return (
     <div className='hero'>
@@ -14,6 +15,27 @@ const Home = () => {
         </div>
       </div>
       <Items />
+      {/* <div className='homescreen_products'>
+        {loading ? (
+          <h2>Loading..</h2>
+        ) : error ? (
+          <h2>{error} </h2>
+        ) : (
+          products.map((product) => (
+            <Items
+              key={product._id}
+              movieId={product._id}
+              name={product.moviename}
+              genress={product.genress}
+              banner={product.banner}
+              showtime={product.showtime}
+              description={product.description}
+              theater={product.theater}
+              ticketprice={product.ticketprice}
+            />
+          ))
+        )}
+      </div> */}
     </div>
   )
 }

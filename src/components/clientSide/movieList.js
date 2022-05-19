@@ -100,14 +100,20 @@ const Items = () => {
               <div className='col-md-4 mb-4'>
                 <div class='card h-100 text-center p-4' key={movie._id}>
                   <div class='card-body'>
+                    <img
+                      src={movie.banner}
+                      alt={movie.movieName}
+                      height='200px'
+                      width='200px'
+                    />
                     <h5 class='card-title'>{movie.moviename}...</h5>
                     <p class='card-text'>Genress:{movie.genress}</p>
                     <p className='card-text'>Show time:{movie.showtime}</p>
                     <p class='card-text'>Description:{movie.description}</p>
-                    {/* <p className='card-text'>Cast:{movie.cast}</p>
-                    <p className='card-text'>banner:{movie.banner}</p> */}
+                    <p className='card-text'>Theater:{movie.theater}</p>
+                    {/* <p className='card-text'>banner:{movie.banner}</p> */}
                     <p class='card-text lead fw-bold'>
-                      Ticket Price:{movie.ticketPrice}
+                      Ticket Price:{movie.ticketprice}
                     </p>
 
                     <NavLink

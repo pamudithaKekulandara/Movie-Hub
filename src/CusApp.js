@@ -5,7 +5,7 @@ import NavBar from './components/navBar'
 import Home from './components/clientSide/Home'
 import Items from './components/clientSide/movieList'
 import Movie from './components/clientSide/movie'
-import CartScreen from './components/clientSide/CartScreen'
+import CartScreen from './components/clientSide/Cart'
 
 function CusApp() {
   return (

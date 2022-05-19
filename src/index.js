@@ -10,14 +10,14 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
         <App />
         <AdminApp />
         <CusApp />
-      </BrowserRouter>
-    </React.StrictMode>
-  </Provider>,
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 )
