@@ -18,25 +18,46 @@ const NavBar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/items">
-                Movies
-              </a>
-            </li>
 
-            <li className="nav-item">
-              <a className="nav-link" href="/theater">
-                Theaters
-              </a>
-            </li>
-          </ul>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          {!localStorage.getItem("admin") ? (
+            <>
+              <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/">
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/items">
+                    Movies
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    About
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="nav-link" href="/addmovie">
+                    Admin
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <></>
+          )}
+
+
           <div className="buttons">
             {localStorage.getItem("admin") ||
             localStorage.getItem("user") != null ? (
