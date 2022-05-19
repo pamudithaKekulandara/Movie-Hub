@@ -8,7 +8,7 @@ import Distheater from './components/movie/Distheater';
 
 
 
-export default function BackendApp() {
+export default function AdminApp() {
   return (
     <div> 
     <Routes>
