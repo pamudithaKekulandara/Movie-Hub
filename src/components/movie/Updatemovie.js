@@ -110,55 +110,55 @@ export default function Updatemovie() {
             onChange={(e) => updateForm({ genress: e.target.value })}
           />
         </div>
-      <div className="form-group">
-        <label htmlFor="description">Showtime</label>
-        <input
-          type="text"
-          className="form-control"
-          id="showtime"
-          value={form.showtime}
-          onChange={(e) => updateForm({showtime: e.target.value})}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          className="form-control"
-          id="description"
-          value={form.description}
-          onChange={(e) => updateForm({description: e.target.value})}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Cast</label>
-        <input
-          type="text"
-          className="form-control"
-          id="cast"
-          value={form.cast}
-          onChange={(e) => updateForm({cast: e.target.value})}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="description">Banner</label>
-        <input
-          type="text"
-          className="form-control"
-          id="banner"
-          value={form.banner }
-          onChange={(e) => updateForm({   banner: e.target.value})}
-        />
-      </div>
-      <div className="form-group">
-         <input
-           type="submit"
-           value="Update Record"
-           className="btn btn-primary"
-         />
-       </div>
-      {/* <button type="submit" class="btn btn-primary">Update</button> */}
-    </form>
-  </div>
-)
+        <div className="form-group">
+          <label htmlFor="description">Showtime</label>
+          <input
+            type="text"
+            className="form-control"
+            id="showtime"
+            value={form.showtime}
+            onChange={(e) => updateForm({ showtime: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            className="form-control"
+            id="description"
+            value={form.description}
+            onChange={(e) => updateForm({ description: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Cast</label>
+          <input
+            type="text"
+            className="form-control"
+            id="cast"
+            value={form.cast}
+            onChange={(e) => updateForm({ cast: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Banner</label>
+          <input
+            type="text"
+            className="form-control"
+            id="banner"
+            value={form.banner}
+            onChange={(e) => updateForm({ banner: e.target.value })}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="submit"
+            value="Update Record"
+            className="btn btn-primary"
+          />
+        </div>
+        {/* <button type="submit" className="btn btn-primary">Update</button> */}
+      </form>
+    </div>
+  );
 }
