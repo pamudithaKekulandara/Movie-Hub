@@ -96,16 +96,12 @@ recordRoutes.route("/customer/login").post((req, res) => {
 });
 
 recordRoutes.route("/admin/login").post((req, res) => {
-  let db_connect = dbo.getDb();
-  db_connect
-    .collection("admin")
-    .findOne({ email: req.body.email }, function (err, result) {
-      if (err) throw err;
-      if (result.password == req.body.password) {
-        res.json("granted");
-      } else {
-        res.json("denied");
-      }
-    });
-});
-module.exports = recordRoutes;
+  
+  
+  if(req.body.email=="admin" && req.body.password=="admin"){
+    res.json("granted");}
+    else{
+    res.json("denied");
+    }
+  })
+module.exports = recordRoutes
