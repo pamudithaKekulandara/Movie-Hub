@@ -60,7 +60,7 @@ export default function Login(props) {
 
   return (
     <div>
-      <div className="form">
+      <div className="center">
         <div className="form-toggle"></div>
         <div className="form-panel one">
           <div className="form-header">
@@ -91,16 +91,8 @@ export default function Login(props) {
                   value={password}
                 />
               </div>
-              <div className="form-group">
-                <label className="form-remember">
-                  <input type="checkbox" />
-                  Remember Me
-                </label>
-                <a className="form-recovery" href="#">
-                  Forgot Password?
-                </a>
-              </div>
-              <div className="form-group">
+            
+              <div className="center">
                 <button type="submit">Log In</button>
               </div>
             </form>
