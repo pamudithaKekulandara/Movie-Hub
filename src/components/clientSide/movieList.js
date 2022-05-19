@@ -48,10 +48,10 @@ const Items = () => {
     )
   }
 
-  const filterMovie = (type, moviename) => {
+  const filterMovie = (genress) => {
     const updateList = data.filter(
-      (x) => x.type === type,
-      moviename == moviename
+      (x) => x.genress === genress,
+      
     )
     setFilter(updateList)
   }
@@ -85,14 +85,14 @@ const Items = () => {
             Comedy
           </button>
 
-          <input
+          {/* <input
             type='text'
             placeholder='Search..'
             onChange={() => {
               filterMovie(Movie.moviename)
             }}
           />
-          <button onSubmit={filterMovie}>search</button>
+          <button onSubmit={filterMovie}>search</button> */}
         </div>
         {filter.map((movie) => {
           return (

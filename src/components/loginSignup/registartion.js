@@ -30,7 +30,10 @@ export default function Register() {
     const newCustomer = { ...form }
     if (form.password != form.rpassword) {
       alert('Plesase enter password correctly')
+
+      window.location = "/reg";
     }
+    else{
     await fetch('http://localhost:5000/customer/add', {
       method: 'POST',
       headers: {
@@ -55,6 +58,7 @@ export default function Register() {
     })
     navigate('/')
   }
+}
 
   return (
     <div class='container'>
