@@ -88,11 +88,8 @@ const Items = () => {
           </button>
 
 
-            onChange={() => {
-              filterMovie(Movie.moviename);
-            }}
-          />
-          <button onSubmit={filterMovie}>search</button> */}
+           
+       
         </div>
         {filter.map((movie) => {
           return (

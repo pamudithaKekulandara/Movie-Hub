@@ -57,6 +57,7 @@ const NavBar = () => {
             <></>
           )}
 
+
           <div className="buttons">
             {localStorage.getItem("admin") ||
             localStorage.getItem("user") != null ? (
@@ -86,7 +87,7 @@ const NavBar = () => {
                 </a>
               </div>
             </>
-          ) : (
+          ) :  (
             ""
           )}
         </div>
