@@ -1,28 +1,27 @@
-const express = require('express')
+const express = require("express");
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
-const recordRoutes = express.Router()
+const recordRoutes = express.Router();
 
 // This will help us connect to the database
-const dbo = require('../db/conn')
+const dbo = require("../db/conn");
 
 // This help convert the id from string to ObjectId for the _id.
-const ObjectId = require('mongodb').ObjectId
-
+const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you get a list of all the records.
-recordRoutes.route('/customer').get(function (req, res) {
-  let db_connect = dbo.getDb('movieHub')
+recordRoutes.route("/customer").get(function (req, res) {
+  let db_connect = dbo.getDb("movieHub");
   db_connect
-    .collection('customer')
+    .collection("customer")
     .find({})
     .toArray(function (err, result) {
-      if (err) throw err
-      res.json(result)
-    })
-})
+      if (err) throw err;
+      res.json(result);
+    });
+});
 
 // This section will help you get a single record by id
 recordRoutes.route("/customer/:id").get(function (req, res) {
@@ -35,8 +34,8 @@ recordRoutes.route("/customer/:id").get(function (req, res) {
 });
 
 // This section will help you create a new record.
-recordRoutes.route('/customer/add').post(function (req, response) {
-  let db_connect = dbo.getDb()
+recordRoutes.route("/customer/add").post(function (req, response) {
+  let db_connect = dbo.getDb();
   let myobj = {
     name: req.body.name,
     phoneNo: req.body.phoneNo,
@@ -68,7 +67,6 @@ recordRoutes.route("/update/:id").post(function (req, response) {
       eDate: req.body.eDate,
       eYear: req.body.eYear,
     },
-
   };
 
   // This section will help you delete a record
@@ -95,19 +93,15 @@ recordRoutes.route("/customer/login").post((req, res) => {
         res.json("denied");
       }
     });
-  // Employee.find(req.body.email)
-  //   .then((users) => {
-  //     for (user of users) {
-  //       // const decrypted = CryptoJS.AES.decrypt(
-  //       //   user.empPassword,
-  //       //   `${process.env.KEY}`
-  //       // ).toString(CryptoJS.enc.Utf8);
-  //       if (req.body.password == user.password) {
-  //         res.send("granted");
-  //       }
-  //     }
-  //     res.send("denied");
-  //   })
-  //   .catch((err) => res.status(400).json("Error: " + err));
 });
-module.exports = recordRoutes;
+
+recordRoutes.route("/admin/login").post((req, res) => {
+  
+  
+  if(req.body.email=="admin" && req.body.password=="admin"){
+    res.json("granted");}
+    else{
+    res.json("denied");
+    }
+  })
+module.exports = recordRoutes

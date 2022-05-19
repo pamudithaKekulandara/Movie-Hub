@@ -3,9 +3,12 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import "./reg.css";
 
-export default function LoginFun() {
+export default function Login(props) {
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
+    if (localStorage.getItem("admin")) {
+      window.location = "/admin";
+    }
     if (loggedInUser != null) {
       window.location = "/users";
     }
@@ -15,37 +18,60 @@ export default function LoginFun() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  if (props.logout) {
+    localStorage.removeItem("admin");
+    localStorage.removeItem("user");
+    window.location = "/";
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/customer/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        if (res.data == "granted") {
-          localStorage.setItem("user", email);
-          window.location = "/users";
-        } else {
-          console.log(res.data);
-        }
-      });
+    if (props.admin) {
+      axios
+        .post("http://localhost:5000/admin/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.data == "granted") {
+            // localStorage.setItem("user", email);
+            localStorage.setItem("admin", true);
+            window.location = "/admin";
+          } else {
+            console.log(res.data);
+          }
+        });
+    } else {
+      axios
+        .post("http://localhost:5000/customer/login", {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.data == "granted") {
+            localStorage.setItem("user", email);
+            window.location = "/users";
+          } else {
+            console.log(res.data);
+          }
+        });
+    }
   };
 
   return (
     <div>
-      <div class="form">
-        <div class="form-toggle"></div>
-        <div class="form-panel one">
-          <div class="form-header">
+      <div className="center">
+        <div className="form-toggle"></div>
+        <div className="form-panel one">
+          <div className="form-header">
             <h1>Account Login</h1>
           </div>
-          <div class="form-content">
+          <div className="form-content">
             <form onSubmit={submitHandler}>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="username">Username</label>
                 <input
-                  className="center"
+                  classNameName="center"
                   type="text"
                   id="username"
                   name="username"
@@ -54,7 +80,7 @@ export default function LoginFun() {
                   value={email}
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="password">Password</label>
                 <input
                   type="password"
@@ -65,16 +91,8 @@ export default function LoginFun() {
                   value={password}
                 />
               </div>
-              <div class="form-group">
-                <label class="form-remember">
-                  <input type="checkbox" />
-                  Remember Me
-                </label>
-                <a class="form-recovery" href="#">
-                  Forgot Password?
-                </a>
-              </div>
-              <div class="form-group">
+            
+              <div className="center">
                 <button type="submit">Log In</button>
               </div>
             </form>

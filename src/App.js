@@ -10,32 +10,19 @@ import Dismovie from "./components/movie/Dismovie";
 import CusApp from "./CusApp";
 import AdminApp from "./AdminApp";
 import Register from "./components/loginSignup/registartion";
-import LoginFun from "./components/loginSignup/login";
+import Login from "./components/loginSignup/login";
 import { useState } from "react";
 
 function App() {
-  // const adminUser={
-  //   email:"456",
-  //   password:"123"
-
-  // }
-
-  // const [customer,setCustomer]=useState({email:""})
-  // const[error,setError]=useState("");
-
-  // const Login=details=>{
-
-  //   console.log(details);
-
-  // }
   return (
     <div>
-      <NavBar />
-
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        {/* <Route exact path="/" element={<Home />} /> */}
         <Route exact path="/reg" element={<Register />} />
-        <Route exact path="/login" element={<LoginFun />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/logout" element={<Login logout={true} />} />
+        <Route exact path="/admin" element={<AdminApp />} />
+        <Route exact path="/admin/login" element={<Login admin={true} />} />
         {/* <Route exact path="/customer" element={<CusApp/>}/>
     <Route exact path='admin' element={<AdminApp/>}/> */}
       </Routes>
@@ -43,4 +30,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
