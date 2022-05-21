@@ -1,6 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const state = useSelector((state) => state.handleCart);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -45,7 +48,6 @@ const NavBar = () => {
             <></>
           )}
 
-
           <div className="buttons">
             {localStorage.getItem("admin") ||
             localStorage.getItem("user") != null ? (
@@ -75,7 +77,7 @@ const NavBar = () => {
                 </a>
               </div>
             </>
-          ) :  (
+          ) : (
             ""
           )}
         </div>

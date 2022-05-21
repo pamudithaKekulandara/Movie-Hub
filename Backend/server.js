@@ -3,12 +3,16 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 5000;
+// const stripe = require("stripe")("");
+// const uuid = require("uuid/v4");
+
 app.use(cors());
 app.use(express.json());
 app.use(require("./routes/record"));
 app.use(require("./routes/movie"));
 app.use(require("./routes/customer"));
 app.use(require("./routes/theater"));
+app.use(require("./routes/cart"))
 // get driver connection
 const dbo = require("./db/conn");
  
