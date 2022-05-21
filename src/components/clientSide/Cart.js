@@ -81,6 +81,10 @@ const Cart = () => {
     )
   }
 
+  const proceedCheckout = () => {
+    return 0
+  }
+
   return (
     <div>
       {state.length === 0 && emptyCart()}
