@@ -13,9 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
-        <AdminApp />
         <CusApp />
+        <App />
+        {/* <AdminApp /> */}
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
