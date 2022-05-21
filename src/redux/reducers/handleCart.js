@@ -1,43 +1,41 @@
 const cart = []
 
 const handleCart = (state = cart, action) => {
-  const product = action.payload
+  const movie = action.payload
   switch (action.type) {
     case 'ADDITEM':
-      // const exist = state.find((x) => x.id === product.id)
-      // if (exist) {
-      //   return state.map((x) =>
-      //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
-      //   )
-      // } else {
-      //   const product = action.payload
-      //   return [
-      //     ...state,
-      //     {
-      //       ...product,
-      //       qty: 1,
-      //     },
-      //   ]
-      // }
-        return [...state, action.payload]
+      // Check if movie is Already Exist
+      const exist = state.find((x) => x._id === movie._id)
+      if (exist) {
+        // Increase the Quantity
+        return state.map((x) =>
+          x._id === movie._id ? { ...x, qty: x.qty + 1 } : x
+        )
+      } else {
+        const movie = action.payload
+        return [
+          ...state,
+          {
+            ...movie,
+            qty: 1,
+          },
+        ]
+      }
       break
 
     case 'DELITEM':
-      const exist1 = state.find((x) => x.id === product.id)
-       return (state = state.filter((x) => {
-         return x.id !== action.payload.id
-       }))
-      // if (exist1.qty === 1) {
-      //   return state.filter((x) => x.id !== exist1.id)
-      // } else {
-      //   return state.map((x) =>
-      //     x.id === product.id ? { ...x, qty: x.qty - 1 } : x
-      //   )
-      // }
+      const exist1 = state.find((x) => x._id === movie._id)
+      if (exist1.qty === 1) {
+        return state.filter((x) => x._id !== exist1._id)
+      } else {
+        return state.map((x) =>
+          x.id === movie._id ? { ...x, qty: x.qty - 1 } : x
+        )
+      }
       break
 
     default:
-      return state;
+      return state
       break
   }
 }

@@ -1,56 +1,93 @@
 import React from 'react'
-import { useParams } from 'react-router'
-import { useState } from 'react'
-import DATA from '../Data'
-import { useDispatch } from 'react-redux'
-import { addItem, delItem } from '../../redux/actions/index'
+import { useSelector, useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { addCart, delCart } from '../../redux/actions'
 
-const ProductDetail = () => {
-  const [cartBtn, setCartBtn] = useState('Add to Cart')
-  {
-    /* Now we need a product id which is pass from the product page. */
-  }
-  const proid = useParams()
-  const proDetail = DATA.filter((x) => x.id == proid.id)
-  const product = proDetail[0]
-  console.log(product)
-
-  // We need to store useDispatch in a variable
+const Cart = () => {
+  const state = useSelector((state) => state.handleCart)
   const dispatch = useDispatch()
 
-  const handleCart = (product) => {
-    if (cartBtn === 'Add to Cart') {
-      dispatch(addItem(product))
-      setCartBtn('Remove from Cart')
-    } else {
-      dispatch(delItem(product))
-      setCartBtn('Add to Cart')
-    }
+  const handleAdd = (movie) => {
+    dispatch(addCart(movie))
+  }
+  const handleDel = (movie) => {
+    dispatch(delCart(movie))
   }
 
-  return (
-    <>
-      <div className='container my-5 py-3'>
-        <div className='row'>
-          <div className='col-md-6 d-flex justify-content-center mx-auto product'>
-            <img src={product.img} alt={product.title} height='400px' />
-          </div>
-          <div className='col-md-6 d-flex flex-column justify-content-center'>
-            <h1 className='display-5 fw-bold'>{product.title}</h1>
-            <hr />
-            <h2 className='my-4'>${product.price}</h2>
-            <p className='lead'>{product.desc}</p>
-            <button
-              onClick={() => handleCart(product)}
-              className='btn btn-outline-primary my-5'
-            >
-              {cartBtn}
-            </button>
+  const emptyCart = () => {
+    return (
+      <div className='px-4 my-5 bg-light rounded-3 py-5'>
+        <div className='container py-4'>
+          <div className='row'>
+            <h3>Your Cart is Empty</h3>
           </div>
         </div>
       </div>
-    </>
+    )
+  }
+  const cartItems = (movie) => {
+    return (
+      <>
+        <div className='px-4 my-5 bg-light rounded-3 py-5'>
+          <div className='container py-4'>
+            <div className='row justify-content-center'>
+              <div className='col-md-4'>
+                <img
+                  src={movie.banner}
+                  alt={movie.movieName}
+                  height='200px'
+                  width='180px'
+                />
+              </div>
+              <div className='col-md-4'>
+                <h3>{movie.movieName}</h3>
+                <p className='lead fw-bold'>
+                  {movie.qty} X ${movie.ticketprice} = $
+                  {movie.qty * movie.ticketprice}
+                </p>
+                <button
+                  className='btn btn-outline-dark me-4'
+                  onClick={() => handleDel(movie)}
+                >
+                  <i className='fa fa-minus'></i>
+                </button>
+                <button
+                  className='btn btn-outline-dark'
+                  onClick={() => handleAdd(movie)}
+                >
+                  <i className='fa fa-plus'></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+  const buttons = () => {
+    return (
+      <>
+        <div className='container'>
+          <div className='row'>
+            <NavLink
+              to='/checkout'
+              className='btn btn-outline-dark mb-5 w-25 mx-auto'
+            >
+              Proceed to Checkout
+            </NavLink>
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <div>
+      {state.length === 0 && emptyCart()}
+      {state.length !== 0 && state.map(cartItems)}
+      {state.length !== 0 && buttons()}
+    </div>
   )
 }
 
-export default ProductDetail
+export default Cart
