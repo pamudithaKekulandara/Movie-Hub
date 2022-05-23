@@ -10,12 +10,10 @@ import Cart from './components/clientSide/Cart'
 function CusApp() {
   return (
     <div>
-      {/* <NavBar/>   */}
       <NavBar />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/theater' element={<Theaters />} />
-        <Route exact path='/' element={<Home />} />
         <Route exact path='/items' element={<Items />} />
         <Route exact path='/movie/:id' element={<Movie />} />
         <Route exact path='/cart' element={<Cart />} />

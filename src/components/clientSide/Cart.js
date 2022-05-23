@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { addCart, delCart } from '../../redux/actions'
+import StripeCheckout from 'react-stripe-checkout'
 
 const Cart = () => {
   const state = useSelector((state) => state.handleCart)
@@ -25,7 +25,10 @@ const Cart = () => {
       </div>
     )
   }
+
+  var total = 0
   const cartItems = (movie) => {
+    total = total + parseInt(movie.ticketprice)
     return (
       <>
         <div className='px-4 my-5 bg-light rounded-3 py-5'>
@@ -64,25 +67,62 @@ const Cart = () => {
       </>
     )
   }
-  const buttons = () => {
+
+  const buttons = (movie) => {
+    const makePayment = async (token) => {
+      const body = {
+        token,
+        movie,
+        total,
+      }
+      const headers = {
+        'Content-Type': 'application/json',
+      }
+      return fetch('http://localhost:5000/payment', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body),
+      })
+        .then((res) => {
+          console.log('RESPONSE', res)
+          const { status } = res
+          console.log('STATUS', status)
+        })
+        .catch((err) => console.log(err))
+    }
+
     return (
       <>
         <div className='container'>
           <div className='row'>
-            <NavLink
-              to='/checkout'
-              className='btn btn-outline-dark mb-5 w-25 mx-auto'
-            >
-              Proceed to Checkout
-            </NavLink>
+            <div className='mb-3 w-50 mx-auto'>
+              <li className='list-group-item d-flex justify-content-between'>
+                <span>Total (USD)</span>
+                <strong>${total}</strong>
+              </li>
+            </div>
           </div>
+          <StripeCheckout
+            stripeKey='pk_test_51L25iiBEL1qU73Gcc3tVwXpkgQmyqAz732exSJNd9x0QkfdFiodnhn8IVt3NniMFSsrAkkptjnovXDgtneX0mEP2003ReSC4Cm'
+            token={makePayment}
+            name='Checkout'
+            AMOUNT={total * 100}
+            billingAddress
+            shippingAddress
+          >
+            <div className='row'>
+              <button className='btn btn-outline-dark mb-5 w-25 mx-auto'>
+                Proceed to Checkout
+              </button>
+            </div>
+          </StripeCheckout>
         </div>
       </>
     )
   }
 
   return (
-    <div>
+    <div className='container'>
       {state.length === 0 && emptyCart()}
       {state.length !== 0 && state.map(cartItems)}
       {state.length !== 0 && buttons()}

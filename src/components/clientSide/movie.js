@@ -18,6 +18,13 @@ const Movie = () => {
   }
 
   useEffect(() => {
+    const loggedInUser = localStorage.getItem('user')
+    if (loggedInUser == null) {
+      window.location = '/login'
+    }
+  }, [])
+
+  useEffect(() => {
     const getMovie = async () => {
       setLoading(true)
       const response = await fetch(`http://localhost:5000/movie/${id}`)
@@ -66,18 +73,6 @@ const Movie = () => {
             <p className='lead'>Theater : {movie.theater}</p>
             <p className='lead fw-bolder'>Time : {movie.showtime}</p>
             <h3 className='display-6 fw-bold my-4'>${movie.ticketprice}</h3>
-            {/* <div className='my-4 col-3'>
-              <input
-                type='number'
-                placeholder='No. Of Tickets'
-                id='ticketCount'
-                value={ticketCount}
-                onChange={(e) => setCount({ ticketCount: e.target.value })}
-              />
-            </div> */}
-            {/* <div>
-              <DatePicker onChange={onChange} value={value} />
-            </div> */}
             <button
               className='btn btn-dark px-4 py-2 me-2'
               onClick={() => addProduct(movie)}
