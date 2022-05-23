@@ -87,6 +87,7 @@ const Cart = () => {
           console.log('RESPONSE', res)
           const { status } = res
           console.log('STATUS', status)
+          window.location.reload(false)
         })
         .catch((err) => console.log(err))
     }
