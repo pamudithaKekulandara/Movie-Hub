@@ -10,7 +10,6 @@ import Cart from './components/clientSide/Cart'
 function CusApp() {
   return (
     <div>
-      {/* <NavBar/>   */}
       <NavBar />
       <Routes>
         <Route exact path='/' element={<Home />} />
