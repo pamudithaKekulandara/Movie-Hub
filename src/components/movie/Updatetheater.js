@@ -3,13 +3,10 @@ import { useParams, useNavigate } from "react-router";
 
 export default function Updatemovie() {
   const [form, setForm] = useState({
-    moviename: "",
-    ticketprice: "",
-    genress: "",
-    showtime: "",
+    theatername: "",
+    nosheets: "",
+    place: "",
     description: "",
-    cast: "",
-    banner: "",
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -18,7 +15,7 @@ export default function Updatemovie() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5000/movie/${params.id.toString()}`
+        `http://localhost:5000/theater/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -27,14 +24,14 @@ export default function Updatemovie() {
         return;
       }
 
-      const movie = await response.json();
-      if (!movie) {
-        window.alert(`Movie with id ${id} not found`);
+      const theater = await response.json();
+      if (!theater) {
+        window.alert(`Theater with id ${id} not found`);
         navigate("/");
         return;
       }
 
-      setForm(movie);
+      setForm(theater);
     }
 
     fetchData();
@@ -49,22 +46,18 @@ export default function Updatemovie() {
     });
   }
 
-  
   async function onSubmit(e) {
     e.preventDefault();
     console.log("dd");
     const editedMovie = {
-      moviename: form.moviename,
-      ticketprice: form.ticketprice,
-      genress: form.genress,
-      showtime: form.showtime,
-      description: form.description,
-      cast: form.cast,
-      banner: form.banner,
+        theatername: form.theatername,
+        nosheets: form.nosheets,
+        place: form.place,
+        description: form.description,
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5000/movie/update/${params.id}`, {
+    await fetch(`http://localhost:5000/theater/update/${params.id}`, {
       method: "POST",
       body: JSON.stringify(editedMovie),
       headers: {
@@ -72,7 +65,7 @@ export default function Updatemovie() {
       },
     });
 
-    navigate("/dismovie");
+    navigate("/distheater");
   }
 
   // This following section will display the form that takes input from the user to update the data.
@@ -81,44 +74,34 @@ export default function Updatemovie() {
       <h3>Update Movie</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="moviename">Movie Name</label>
+          <label htmlFor="theatername">Theater Name</label>
           <input
             type="text"
             className="form-control"
-            id="moviename"
-            value={form.moviename}
-            onChange={(e) => updateForm({ moviename: e.target.value })}
+            id="theatername"
+            value={form.theatername}
+            onChange={(e) => updateForm({ theatername: e.target.value })}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="unitPrice">Ticket Price</label>
+          <label htmlFor="nosheets">Number of Sheets</label>
           <input
             type="number"
             className="form-control"
-            id="ticketprice"
-            value={form.ticketprice}
-            onChange={(e) => updateForm({ ticketprice: e.target.value })}
+            id="nosheets"
+            value={form.nosheets}
+            onChange={(e) => updateForm({ nosheets: e.target.value })}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="quantity">Genress</label>
+          <label htmlFor="place">Place</label>
           <input
             type="text"
             className="form-control"
-            id="genress"
-            value={form.genress}
-            onChange={(e) => updateForm({ genress: e.target.value })}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Showtime</label>
-          <input
-            type="text"
-            className="form-control"
-            id="showtime"
-            value={form.showtime}
-            onChange={(e) => updateForm({ showtime: e.target.value })}
+            id="place"
+            value={form.place}
+            onChange={(e) => updateForm({ place: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -131,26 +114,7 @@ export default function Updatemovie() {
             onChange={(e) => updateForm({ description: e.target.value })}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="description">Cast</label>
-          <input
-            type="text"
-            className="form-control"
-            id="cast"
-            value={form.cast}
-            onChange={(e) => updateForm({ cast: e.target.value })}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Banner</label>
-          <input
-            type="text"
-            className="form-control"
-            id="banner"
-            value={form.banner}
-            onChange={(e) => updateForm({ banner: e.target.value })}
-          />
-        </div>
+
         <div className="form-group">
           <input
             type="submit"

@@ -14,6 +14,7 @@ import Login from "./components/loginSignup/login";
 import Addtheater from './components/movie/Addtheater';
 import Distheater from './components/movie/Distheater';
 import Updatemovie from './components/movie/Updatemovie';
+import Updatetheater from './components/movie/Updatetheater';
 import { useState } from "react";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/addmovie" element={<Addmovie/>}/>
     <Route exact path="/dismovie" element={<Dismovie/>}/>
     <Route exact path="/edit/:id" element={<Updatemovie/>}/>
+    <Route exact path="/tedit/:id" element={<Updatetheater/>}/>
     <Route exact path="/addtheater" element={<Addtheater/>}/>
     <Route exact path="/distheater" element={<Distheater/>}/>
         {/* <Route exact path="/customer" element={<CusApp/>}/>

@@ -75,6 +75,7 @@ recordRoutes.route("/movie/update/:id").post(function (req, response) {
   response.sendStatus(200);
 });
 
+
 // const router = require("express").Router();
 // let movie = require("../routes/movie.js");
 // router.route("/").get((req, res) => {

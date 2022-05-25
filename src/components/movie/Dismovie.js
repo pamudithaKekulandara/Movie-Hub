@@ -11,6 +11,7 @@ const Movie = (props) => (
     <td>{props.movie.description}</td>
     <td>{props.movie.cast}</td>
     <td>{props.movie.banner}</td>
+    
     <td>
       <Link className="btn btn-primary" to={`/edit/${props.movie._id}`}>
         Edit
@@ -60,6 +61,7 @@ export default function Dismovie() {
     const newMovies = movies.filter((el) => el._id !== id);
     setMovies(newMovies);
   }
+  
 
   // This method will map out the records on the table
   function movieList() {

@@ -7,8 +7,9 @@ const Theater = (props) => (
     <td>{props.theater.nosheets}</td>
     <td>{props.theater.place}</td>
     <td>{props.theater.description}</td>
-    {/* <td>
-   <Link className="btn btn-link" to={`/edit/${props.theater._id}`}>Edit</Link> |
+    <td>
+   <Link className="btn btn-link" to={`/tedit/${props.theater._id}`}>
+     Edit</Link>{" "} |
    <button className="btn btn-link"
        onClick={() => {
          props.deleteTheater(props.theater._id);
@@ -16,7 +17,7 @@ const Theater = (props) => (
      >
        Delete
      </button>
-   </td> */}
+   </td>
   </tr>
 );
 
@@ -43,15 +44,15 @@ export default function Distheater() {
     return;
   }, [theaters.length]);
 
-  //This method will delete a record
-  //  async function deleteTheater(id) {
-  //    await fetch(`http://localhost:5000/${id}`, {
-  //      method: "DELETE"
-  //    });
+  // This method will delete a record
+   async function deleteTheater(id) {
+     await fetch(`http://localhost:5000/the/${id}`, {
+       method: "DELETE",
+     });
 
-  //    const newTheater = movies.filter((el) => el._id !== id);
-  //    setTheater(newTheater);
-  //  }
+     const newTheater = theaters.filter((el) => el._id !== id);
+     setTheater(newTheater);
+   }
 
   // This method will map out the records on the table
   function theaterList() {
@@ -59,8 +60,8 @@ export default function Distheater() {
       return (
         <Theater
           theater={theater}
-          //  deleteMovie={() => deleteTheater(movie._id)}
-          //  key={movie._id}
+           deleteTheater={() => deleteTheater(theater._id)}
+           key={theater._id}
         />
       );
     });
