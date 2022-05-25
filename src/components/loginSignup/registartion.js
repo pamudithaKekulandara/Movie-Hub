@@ -35,13 +35,16 @@ export default function Register() {
       window.location = "/reg";
     }
     else{
+    
+      
     await fetch('http://localhost:5000/customer/add', {
       method: 'POST',
 
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newCustomer),
+      body: JSON.stringify(newCustomer)
+      ,
     }).catch((error) => {
       window.alert(error);
       return;
@@ -59,6 +62,7 @@ export default function Register() {
       eYear: "",
     });
     navigate("/");
+    alert("Successfully registered")
   }
 }
 
@@ -149,6 +153,7 @@ export default function Register() {
               type="number"
               placeholder="Card Number"
               id="cardNo"
+              pattern="[0-9].{16}"
               value={form.cardNo}
               onChange={(e) => updateForm({ cardNo: e.target.value })}
             />
@@ -163,6 +168,7 @@ export default function Register() {
                 type="number"
                 placeholder="Card CVC"
                 id="cvc"
+                pattern="[0-9].{3}"
                 value={form.cvc}
                 onChange={(e) => updateForm({ cvc: e.target.value })}
               />
@@ -186,7 +192,7 @@ export default function Register() {
 
               <div className="col-third">
                 <input
-                  type="number"
+                  type="text"
                   placeholder="exp year"
                   id="eYear"
                   value={form.eYear}
@@ -207,7 +213,8 @@ export default function Register() {
           </div>
         </div>
         <div className="center">
-          <button className="btn btn-outline-dark me-2 button1">
+          <button className="btn btn-outline-dark me-2 button1"
+          onClick={onSubmit}>
             REGISTER
           </button>
         </div>
