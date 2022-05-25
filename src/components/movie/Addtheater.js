@@ -1,3 +1,4 @@
+import "./Admin.css"
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
@@ -42,15 +43,20 @@ export default function Addtheater() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <center>
-              <Link to = "/admin">
-    <button>Home</button>
-    </Link>
-    <Link to = "/distheater">
-    <button>Theater</button>
-    </Link>
-      <div className="container">
-        <h3>Add New Theater</h3>
+    <div>
+        <div className="nav">
+            <Link to = "/admin">
+                <button className="btn btn-primary">Home</button>
+            </Link>
+            <Link to = "/distheater">
+                <button className="btn btn-primary">Theater</button>
+            </Link>
+        </div>
+      <div className="form">
+
+        <h3 className="navi">Add New Theater</h3>
+
+        <div className="forminit">
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="itemName">Theater Name</label>
@@ -94,12 +100,14 @@ export default function Addtheater() {
               onChange={(e) => updateForm({ description: e.target.value })}
             />
           </div>
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+            <center>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+            </center>
         </form>
+        </div>
       </div>
-    </center>
+    </div>
   );
 }

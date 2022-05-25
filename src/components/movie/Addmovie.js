@@ -1,6 +1,8 @@
+import "./Admin.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+
 
 export default function Addmovie() {
   const [form, setForm] = useState({
@@ -56,16 +58,20 @@ export default function Addmovie() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <center>
-        <Link to = "/admin">
-    <button>Home</button>
+ <div>
+   <div className="nav">
+   <Link to = "/admin">
+    <button className="btn btn-primary">Home</button>
     </Link>
     <Link to = "/dismovie">
-    <button>Movies</button>
+    <button className="btn btn-primary">Movies</button>
     </Link>
-      <div className="container">
-        <h3>Add New Item</h3>
-        <form onSubmit={onSubmit}>
+   </div>
+   
+      <div className=" form">
+        <h3 className="navi">Add New Movie</h3>
+        <div className="forminit">
+        <form onSubmit={onSubmit} >
           <div className="form-group">
             <label htmlFor="itemName">Movie Name</label>
             <input
@@ -150,11 +156,14 @@ export default function Addmovie() {
               onChange={(e) => updateForm({ banner: e.target.value })}
             />
           </div>
+          <center>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          </center>
         </form>
+        </div>
       </div>
-    </center>
+      </div>
   );
 }

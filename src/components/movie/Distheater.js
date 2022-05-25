@@ -70,16 +70,16 @@ export default function Distheater() {
   return (
     <center>
               <Link to = "/admin">
-    <button>Home</button>
+    <button className="btn btn-primary">Home</button>
     </Link>
     <Link to = "/addtheater">
-    <button>Add New Theater</button>
+    <button className="btn btn-primary">Add New Theater</button>
     </Link>
       <div>
-        <h3>TheaterList</h3>
+        <h3 style={{ marginTop: 20}}>TheaterList</h3>
         <table
           className="table table-striped"
-          style={{ marginTop: 50, width: 700 }}
+          style={{ marginTop: 20, width: 700 }}
         >
           <thead>
             <tr>
