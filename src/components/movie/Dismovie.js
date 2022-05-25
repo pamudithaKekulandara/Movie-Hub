@@ -5,7 +5,7 @@ const Movie = (props) => (
   <tr>
     <td>{props.movie.moviename}</td>
     <td>{props.movie.ticketprice}</td>
-    <td>{props.movie.theater}</td>
+    <td>{props.movie.threater}</td>
     <td>{props.movie.genress}</td>
     <td>{props.movie.showtime}</td>
     <td>{props.movie.description}</td>
