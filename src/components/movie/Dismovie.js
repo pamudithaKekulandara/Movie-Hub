@@ -60,6 +60,7 @@ export default function Dismovie() {
 
     const newMovies = movies.filter((el) => el._id !== id);
     setMovies(newMovies);
+    alert("successfully delete movie.....");
   }
   
 

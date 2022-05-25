@@ -69,6 +69,7 @@ useEffect(() => {
       cast: "",
       banner: "",
     });
+    alert("successfully Added movie.....");
     navigate("/addmovie");
   }
 

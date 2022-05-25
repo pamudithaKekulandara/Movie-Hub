@@ -38,6 +38,7 @@ export default function Addtheater() {
     });
 
     setForm({ theatername: "", nosheets: "", place: "", description: "" });
+    alert("successfully Added Theater.....");
     navigate("/addtheater");
   }
 

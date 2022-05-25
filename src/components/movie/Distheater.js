@@ -8,9 +8,9 @@ const Theater = (props) => (
     <td>{props.theater.place}</td>
     <td>{props.theater.description}</td>
     <td>
-   <Link className="btn btn-link" to={`/tedit/${props.theater._id}`}>
+   <Link className="btn btn-primary" to={`/tedit/${props.theater._id}`}>
      Edit</Link>{" "} |
-   <button className="btn btn-link"
+   <button className="btn btn-primary"
        onClick={() => {
          props.deleteTheater(props.theater._id);
        }}
@@ -52,6 +52,7 @@ export default function Distheater() {
 
      const newTheater = theaters.filter((el) => el._id !== id);
      setTheater(newTheater);
+     alert("successfully delete theater.....");
    }
 
   // This method will map out the records on the table
@@ -63,6 +64,8 @@ export default function Distheater() {
            deleteTheater={() => deleteTheater(theater._id)}
            key={theater._id}
         />
+        
+        
       );
     });
   }
