@@ -70,7 +70,7 @@ useEffect(() => {
     const editedMovie = {
       moviename: form.moviename,
       ticketprice: form.ticketprice,
-      threater:form.theater,
+      threater:form.threater,
       genress: form.genress,
       showtime: form.showtime,
       description: form.description,
@@ -118,8 +118,7 @@ useEffect(() => {
 
         <div className="form-group">
           <label htmlFor="theatername">Theater Name</label>
-          <input type="text" className="form-control" id="threater" value={form.threater} onChange={(e) => updateForm({ threater: e.target.value })}/>
-          <select class="form-select" aria-label="Default select example" >
+          <select class="form-select" aria-label="Default select example" id="threater" value={form.threater} onChange={(e) => updateForm({ threater: e.target.value })} >
           {                          
               theaters.map(u=>(
               <option value={u.theatername}>{u.theatername}</option>
