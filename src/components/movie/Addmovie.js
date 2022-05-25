@@ -8,15 +8,31 @@ export default function Addmovie() {
   const [form, setForm] = useState({
     moviename: "",
     ticketprice: "",
-    theater: "",
+    threater: "",
     genress: "",
     showtime: "",
     description: "",
     cast: "",
     banner: "",
   });
+console.log(form.threater);
 
   const navigate = useNavigate();
+
+     
+const [theaters, setTheaters] = useState([]);
+
+useEffect(() => {
+      async function getTheaters() {
+       const responseu = await fetch(`http://localhost:5000/theater/`);
+        const theaters = await responseu.json();
+        setTheaters(theaters);
+      }
+      getTheaters();     
+    return;
+  },);
+
+
 
   // These methods will update the state properties.
   function updateForm(value) {
@@ -46,7 +62,7 @@ export default function Addmovie() {
     setForm({
       moviename: "",
       ticketprice: "",
-      theater: "",
+      threater: "",
       genress: "",
       showtime: "",
       description: "",
@@ -95,14 +111,14 @@ export default function Addmovie() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="itemName">Theater Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="theater"
-              value={form.theater}
-              onChange={(e) => updateForm({ theater: e.target.value })}
-            />
+          <label htmlFor="theatername">Theater Name</label>
+          <input type="text" className="form-control" id="threater" value={form.threater} onChange={(e) => updateForm({ threater: e.target.value })}/>
+          <select class="form-select" aria-label="Default select example" >
+          {                          
+              theaters.map(u=>(
+              <option value={u.theatername}>{u.theatername}</option>
+              ))}
+          </select>
           </div>
 
           <div className="form-group">
