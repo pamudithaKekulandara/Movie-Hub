@@ -61,16 +61,15 @@ const NavBar = () => {
                 <a href='/login' className='btn btn-outline-dark'>
                   <i className='fa fa-sign-in me-1'></i> Login
                 </a>
+
+
               </>
             )}
           </div>
-          {!localStorage.getItem('admin') ? (
+          {!localStorage.getItem('admin') &&
+            localStorage.getItem('user')!=null ? 
             <>
-              <div className='buttons'>
-                <a href='/reg' className='btn btn-outline-dark'>
-                  <i className='fa fa-user-plus ms-2'></i> Register
-                </a>
-              </div>
+            
               <div className='buttons'>
                 <NavLink to='/cart' className='btn btn-outline-dark'>
                   <i className='fa fa-shopping-cart ms-2'></i> Cart (
@@ -78,9 +77,20 @@ const NavBar = () => {
                 </NavLink>
               </div>
             </>
-          ) : (
+          : !localStorage.getItem('admin') &&
+              localStorage.getItem('user')==null ?
+
+            <div className='buttons'>
+            <a href='/reg' className='btn btn-outline-dark'>
+              <i className='fa fa-user-plus ms-2'></i> Register
+            </a>
+          </div>
+
+          :(
             ''
-          )}
+          )
+
+          }
         </div>
       </div>
     </nav>
