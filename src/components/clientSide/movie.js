@@ -15,6 +15,7 @@ const Movie = () => {
   const dispatch = useDispatch()
   const addProduct = (movie) => {
     dispatch(addCart(movie))
+    alert('Successfully Added to the Cart')
   }
 
   useEffect(() => {
@@ -72,7 +73,7 @@ const Movie = () => {
             <p className='lead'>Description : {movie.description}</p>
             <p className='lead'>Theater : {movie.theater}</p>
             <p className='lead fw-bolder'>Time : {movie.showtime}</p>
-            <h3 className='display-6 fw-bold my-4'>${movie.ticketprice}</h3>
+            <h3 className='display-6 fw-bold my-4'>{movie.ticketprice} LKR</h3>
             <button
               className='btn btn-dark px-4 py-2 me-2'
               onClick={() => addProduct(movie)}
