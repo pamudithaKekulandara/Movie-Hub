@@ -7,16 +7,17 @@ const Theater = (props) => (
     <td>{props.theater.nosheets}</td>
     <td>{props.theater.place}</td>
     <td>{props.theater.description}</td>
-    {/* <td>
-   <Link className="btn btn-link" to={`/edit/${props.theater._id}`}>Edit</Link> |
-   <button className="btn btn-link"
+    <td>
+   <Link className="btn btn-primary" to={`/tedit/${props.theater._id}`}>
+     Edit</Link>{" "} |
+   <button className="btn btn-primary"
        onClick={() => {
          props.deleteTheater(props.theater._id);
        }}
      >
        Delete
      </button>
-   </td> */}
+   </td>
   </tr>
 );
 
@@ -43,15 +44,16 @@ export default function Distheater() {
     return;
   }, [theaters.length]);
 
-  //This method will delete a record
-  //  async function deleteTheater(id) {
-  //    await fetch(`http://localhost:5000/${id}`, {
-  //      method: "DELETE"
-  //    });
+  // This method will delete a record
+   async function deleteTheater(id) {
+     await fetch(`http://localhost:5000/the/${id}`, {
+       method: "DELETE",
+     });
 
-  //    const newTheater = movies.filter((el) => el._id !== id);
-  //    setTheater(newTheater);
-  //  }
+     const newTheater = theaters.filter((el) => el._id !== id);
+     setTheater(newTheater);
+     alert("successfully delete theater.....");
+   }
 
   // This method will map out the records on the table
   function theaterList() {
@@ -59,9 +61,11 @@ export default function Distheater() {
       return (
         <Theater
           theater={theater}
-          //  deleteMovie={() => deleteTheater(movie._id)}
-          //  key={movie._id}
+           deleteTheater={() => deleteTheater(theater._id)}
+           key={theater._id}
         />
+        
+        
       );
     });
   }
@@ -70,16 +74,16 @@ export default function Distheater() {
   return (
     <center>
               <Link to = "/admin">
-    <button>Home</button>
+    <button className="btn btn-primary">Home</button>
     </Link>
     <Link to = "/addtheater">
-    <button>Add New Theater</button>
+    <button className="btn btn-primary">Add New Theater</button>
     </Link>
       <div>
-        <h3>TheaterList</h3>
+        <h3 style={{ marginTop: 20}}>TheaterList</h3>
         <table
           className="table table-striped"
-          style={{ marginTop: 50, width: 700 }}
+          style={{ marginTop: 20, width: 700 }}
         >
           <thead>
             <tr>

@@ -60,8 +60,8 @@ const Theaters = () => {
                   <div class='card h-100 text-center p-4' key={theater._id}>
                     <div class='card-body'>
                       <h5 class='card-title'>{theater.theatername}...</h5>
-                      <p class='card-text'>Genress:{theater.nosheets}</p>
-                      <p className='card-text'>Show time:{theater.place}</p>
+                      <p class='card-text'>Capacity:{theater.nosheets}</p>
+                      <p className='card-text'>Location:{theater.place}</p>
                       <p class='card-text'>Description:{theater.description}</p>
                     
   

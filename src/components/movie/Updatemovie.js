@@ -5,6 +5,7 @@ export default function Updatemovie() {
   const [form, setForm] = useState({
     moviename: "",
     ticketprice: "",
+    threater:"",
     genress: "",
     showtime: "",
     description: "",
@@ -13,6 +14,19 @@ export default function Updatemovie() {
   });
   const params = useParams();
   const navigate = useNavigate();
+
+       
+const [theaters, setTheaters] = useState([]);
+
+useEffect(() => {
+      async function getTheaters() {
+       const responseu = await fetch(`http://localhost:5000/theater/`);
+        const theaters = await responseu.json();
+        setTheaters(theaters);
+      }
+      getTheaters();     
+    return;
+  },);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,12 +63,14 @@ export default function Updatemovie() {
     });
   }
 
+  
   async function onSubmit(e) {
     e.preventDefault();
     console.log("dd");
     const editedMovie = {
       moviename: form.moviename,
       ticketprice: form.ticketprice,
+      threater:form.threater,
       genress: form.genress,
       showtime: form.showtime,
       description: form.description,
@@ -99,6 +115,16 @@ export default function Updatemovie() {
             onChange={(e) => updateForm({ ticketprice: e.target.value })}
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="theatername">Theater Name</label>
+          <select class="form-select" aria-label="Default select example" id="threater" value={form.threater} onChange={(e) => updateForm({ threater: e.target.value })} >
+          {                          
+              theaters.map(u=>(
+              <option value={u.theatername}>{u.theatername}</option>
+              ))}
+          </select>
+          </div>
 
         <div className="form-group">
           <label htmlFor="quantity">Genress</label>

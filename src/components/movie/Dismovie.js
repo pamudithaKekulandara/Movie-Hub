@@ -5,19 +5,20 @@ const Movie = (props) => (
   <tr>
     <td>{props.movie.moviename}</td>
     <td>{props.movie.ticketprice}</td>
-    <td>{props.movie.theater}</td>
+    <td>{props.movie.threater}</td>
     <td>{props.movie.genress}</td>
     <td>{props.movie.showtime}</td>
     <td>{props.movie.description}</td>
     <td>{props.movie.cast}</td>
     <td>{props.movie.banner}</td>
+    
     <td>
-      <Link className="btn btn-link" to={`/edit/${props.movie._id}`}>
+      <Link className="btn btn-primary" to={`/edit/${props.movie._id}`}>
         Edit
       </Link>{" "}
       |
       <button
-        className="btn btn-link"
+        className="btn btn-primary"
         onClick={() => {
           props.deleteMovie(props.movie._id);
         }}
@@ -59,7 +60,9 @@ export default function Dismovie() {
 
     const newMovies = movies.filter((el) => el._id !== id);
     setMovies(newMovies);
+    alert("successfully delete movie.....");
   }
+  
 
   // This method will map out the records on the table
   function movieList() {
@@ -78,16 +81,16 @@ export default function Dismovie() {
   return (
     <center>
               <Link to = "/admin">
-    <button>Home</button>
+    <button className="btn btn-primary">Home</button>
     </Link>
     <Link to = "/addmovie">
-    <button>Add New Update</button>
+    <button className="btn btn-primary">Add New Update</button>
     </Link>
       <div>
-        <h3>MovieList</h3>
+        <h3 style={{marginTop:20}}>MovieList</h3>
         <table
           className="table table-striped"
-          style={{ marginTop: 50, width: 700 }}
+          style={{ marginTop: 30, width: 700 }}
         >
           <thead>
             <tr>

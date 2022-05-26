@@ -1,20 +1,38 @@
+import "./Admin.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+
 
 export default function Addmovie() {
   const [form, setForm] = useState({
     moviename: "",
     ticketprice: "",
-    theater: "",
+    threater: "",
     genress: "",
     showtime: "",
     description: "",
     cast: "",
     banner: "",
   });
+console.log(form.threater);
 
   const navigate = useNavigate();
+
+     
+const [theaters, setTheaters] = useState([]);
+
+useEffect(() => {
+      async function getTheaters() {
+       const responseu = await fetch(`http://localhost:5000/theater/`);
+        const theaters = await responseu.json();
+        setTheaters(theaters);
+      }
+      getTheaters();     
+    return;
+  },);
+
+
 
   // These methods will update the state properties.
   function updateForm(value) {
@@ -44,28 +62,33 @@ export default function Addmovie() {
     setForm({
       moviename: "",
       ticketprice: "",
-      theater: "",
+      threater: "",
       genress: "",
       showtime: "",
       description: "",
       cast: "",
       banner: "",
     });
+    alert("successfully Added movie.....");
     navigate("/addmovie");
   }
 
   // This following section will display the form that takes the input from the user.
   return (
-    <center>
-        <Link to = "/admin">
-    <button>Home</button>
+ <div>
+   <div className="nav">
+   <Link to = "/admin">
+    <button className="btn btn-primary">Home</button>
     </Link>
     <Link to = "/dismovie">
-    <button>Movies</button>
+    <button className="btn btn-primary">Movies</button>
     </Link>
-      <div className="container">
-        <h3>Add New Item</h3>
-        <form onSubmit={onSubmit}>
+   </div>
+   
+      <div className=" form">
+        <h3 className="navi">Add New Movie</h3>
+        <div className="forminit">
+        <form onSubmit={onSubmit} >
           <div className="form-group">
             <label htmlFor="itemName">Movie Name</label>
             <input
@@ -89,14 +112,13 @@ export default function Addmovie() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="itemName">Theater Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="theater"
-              value={form.theater}
-              onChange={(e) => updateForm({ theater: e.target.value })}
-            />
+          <label htmlFor="theatername">Theater Name</label>
+          <select class="form-select" aria-label="Default select example" id="threater" value={form.threater} onChange={(e) => updateForm({ threater: e.target.value })} >
+          {                          
+              theaters.map(u=>(
+              <option value={u.theatername}>{u.theatername}</option>
+              ))}
+          </select>
           </div>
 
           <div className="form-group">
@@ -150,11 +172,14 @@ export default function Addmovie() {
               onChange={(e) => updateForm({ banner: e.target.value })}
             />
           </div>
+          <center>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          </center>
         </form>
+        </div>
       </div>
-    </center>
+      </div>
   );
 }

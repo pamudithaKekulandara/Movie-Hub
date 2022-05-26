@@ -25,22 +25,22 @@ export default function AdminApp() {
     <br></br>
     <br></br>
     <Link to = "/addmovie">
-    <button>ADD NEW MOVIES</button>
+    <button className="btn btn-primary">ADD NEW MOVIES</button>
     </Link>
     <br></br>
     <br></br>
     <Link to = "/addtheater">
-    <button>ADD NEW THEATER</button>
+    <button className="btn btn-primary">ADD NEW THEATER</button>
     </Link>
     <br></br>
     <br></br>
     <Link to = "/dismovie">
-    <button>MOVIES</button>
+    <button className="btn btn-primary">MOVIES</button>
     </Link>
     <br></br>
     <br></br>
     <Link to = "/distheater">
-    <button>THEATER</button>
+    <button className="btn btn-primary">THEATER</button>
     </Link>
     </center>
 
