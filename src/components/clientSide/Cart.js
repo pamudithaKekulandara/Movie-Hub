@@ -45,8 +45,8 @@ const Cart = () => {
               <div className='col-md-4'>
                 <h3>{movie.movieName}</h3>
                 <p className='lead fw-bold'>
-                  {movie.qty} X ${movie.ticketprice} = $
-                  {movie.qty * movie.ticketprice}
+                  {movie.qty} X {movie.ticketprice} LKR =
+                  {movie.qty * movie.ticketprice} LKR
                 </p>
                 <button
                   className='btn btn-outline-dark me-4'
@@ -98,8 +98,8 @@ const Cart = () => {
           <div className='row'>
             <div className='mb-3 w-50 mx-auto'>
               <li className='list-group-item d-flex justify-content-between'>
-                <span>Total (USD)</span>
-                <strong>${total}</strong>
+                <span>Total (LKR)</span>
+                <strong>{total}</strong>
               </li>
             </div>
           </div>
